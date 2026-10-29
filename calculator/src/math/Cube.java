@@ -4,11 +4,10 @@ import core.logger.Logger;
 
 public class Cube 
 {
-	public static Double cubeCalc(String len)
+	public static String cubeCalc(Double len)
 	{
 		Logger.debug("cubeCalc running...");
-		Double convertedLen = Double.valueOf(len);
-		Double area = Math.pow(convertedLen, 6);
+		String area = Double.toString(Math.pow(len, 6));
 		Logger.debug("cubeCalc done.");
 		return area;
 	}

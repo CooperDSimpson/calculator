@@ -4,13 +4,11 @@ import core.logger.Logger;
 
 public class Triangle
 {
-	public static Double TriangleCalc(String base, String height)
+	public static String TriangleCalc(Double base, Double height)
 	{
 		Logger.debug("TriangleCalc running...");
-		Double convertedBase = Double.valueOf(base);
-		Double convertedHeight = Double.valueOf(height);
 		
-		Double area = 0.5 * convertedBase * convertedHeight;
+		String area = Double.toString(0.5 * base * height);
 		Logger.debug("TriangleCalc done.");
 		return area;
 	}

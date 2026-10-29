@@ -2,14 +2,11 @@ package math;
 import core.logger.Logger;
 public class RectPrism
 {
-	public static Double prismCalc(String len, String width, String height)
+	public static String prismCalc(Double len, Double width, Double height)
 	{
 		Logger.debug("prismCalc running...");
-		Double cLen = Double.valueOf(len);
-		Double cWidth = Double.valueOf(width);
-		Double cHeight = Double.valueOf(height);
-		
-		Double area = 2 * ((cLen * cWidth) + (cHeight * cLen) + (cHeight * cWidth));
+
+		String area = Double.toString(2 * ((len * width) + (height * len) + (height * width)));
 		Logger.debug("prismCalc done.");
 		return area;
 	}

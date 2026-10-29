@@ -4,11 +4,10 @@ import core.logger.Logger;
 
 public class Square 
 {
-	public static Double SquareCalc(String len)
+	public static String SquareCalc(Double len)
 	{
 		Logger.debug("SquareCalc running...");
-		Double convertedLen = Double.valueOf(len);
-		Double area = (convertedLen * convertedLen);
+		String area = Double.toString(len * len);
 		Logger.debug("SquareCalc done.");
 		return area;
 	}
