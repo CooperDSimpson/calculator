@@ -27,5 +27,5 @@ public class CubeWindow extends JFrame{
 	
 	    Logger.debug("Creating main panel.");
 	    JPanel panel = new JPanel(new FlowLayout());
-	}
+	}//something
 }
