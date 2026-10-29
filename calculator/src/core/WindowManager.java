@@ -1,9 +1,9 @@
+
 package core;
 
 import javax.swing.SwingUtilities;
 
 import core.logger.Logger;
-import core.logger.LogLevel;
 
 import windows.*;
 
@@ -48,59 +48,39 @@ public final class WindowManager {
     public static void Initialize() {
         Logger.info("Initializing WindowManager.");
 
-        SwingUtilities.invokeLater(() -> {
-            Logger.debug("Initialization running on the Swing EDT.");
+        flags32.clearAll();
 
-            try {
-                Logger.info("Creating all application windows.");
-
-                if (circleWindow == null) circleWindow = new CircleWindow();
-                if (cubeWindow == null) cubeWindow = new CubeWindow();
-                if (currencyWindow == null) currencyWindow = new CurrencyWindow();
-                if (cylinderWindow == null) cylinderWindow = new CylinderWindow();
-                if (mainWindow == null) mainWindow = new MainWindow();
-                if (rectPrismWindow == null) rectPrismWindow = new RectPrismWindow();
-                if (squareWindow == null) squareWindow = new SquareWindow();
-                if (temperatureWindow == null) temperatureWindow = new TemperatureWindow();
-                if (timeWindow == null) timeWindow = new TimeWindow();
-                if (triangleWindow == null) triangleWindow = new TriangleWindow();
-                if (volumeWindow == null) volumeWindow = new VolumeWindow();
-
-                Logger.info("All windows created successfully.");
-
-                UpdateAll();
-
-            } catch (RuntimeException | Error exception) {
-                Logger.fatal(
-                        "Failed to initialize application windows.",
-                        exception
-                );
-
-                throw exception;
-            }
-        });
-
-        Logger.debug("Initialization queued on the Swing EDT.");
+        Logger.debug("WindowManager initialized successfully.");
     }
 
     public static void ShutDown() {
         Logger.info("Shutting down WindowManager.");
 
-        flags32.clearAll();
+        runOnEDT(() -> {
+            flags32.clearAll();
 
-        Logger.debug("All window flags cleared.");
+            Logger.debug("All window flags cleared.");
 
-        UpdateAll();
+            UpdateAll();
 
-        Logger.info("WindowManager shut down.");
+            Logger.info("WindowManager shut down.");
+        });
     }
 
     // ==================== WINDOW CONTROL: CIRCLE ====================
 
     public static void OpenCircleWindow() {
         Logger.info("Opening circle window.");
-        flags32.set("ShowCircleWindow", true);
-        UpdateCircleWindow();
+
+        runOnEDT(() -> {
+            if (circleWindow == null) {
+                Logger.debug("Creating CircleWindow.");
+                circleWindow = new CircleWindow();
+            }
+
+            flags32.set("ShowCircleWindow", true);
+            circleWindow.setVisible(true);
+        });
     }
 
     public static void CloseCircleWindow() {
@@ -117,8 +97,16 @@ public final class WindowManager {
 
     public static void OpenCubeWindow() {
         Logger.info("Opening cube window.");
-        flags32.set("ShowCubeWindow", true);
-        UpdateCubeWindow();
+
+        runOnEDT(() -> {
+            if (cubeWindow == null) {
+                Logger.debug("Creating CubeWindow.");
+                cubeWindow = new CubeWindow();
+            }
+
+            flags32.set("ShowCubeWindow", true);
+            cubeWindow.setVisible(true);
+        });
     }
 
     public static void CloseCubeWindow() {
@@ -135,8 +123,16 @@ public final class WindowManager {
 
     public static void OpenCurrencyWindow() {
         Logger.info("Opening currency window.");
-        flags32.set("ShowCurrencyWindow", true);
-        UpdateCurrencyWindow();
+
+        runOnEDT(() -> {
+            if (currencyWindow == null) {
+                Logger.debug("Creating CurrencyWindow.");
+                currencyWindow = new CurrencyWindow();
+            }
+
+            flags32.set("ShowCurrencyWindow", true);
+            currencyWindow.setVisible(true);
+        });
     }
 
     public static void CloseCurrencyWindow() {
@@ -153,8 +149,16 @@ public final class WindowManager {
 
     public static void OpenCylinderWindow() {
         Logger.info("Opening cylinder window.");
-        flags32.set("ShowCylinderWindow", true);
-        UpdateCylinderWindow();
+
+        runOnEDT(() -> {
+            if (cylinderWindow == null) {
+                Logger.debug("Creating CylinderWindow.");
+                cylinderWindow = new CylinderWindow();
+            }
+
+            flags32.set("ShowCylinderWindow", true);
+            cylinderWindow.setVisible(true);
+        });
     }
 
     public static void CloseCylinderWindow() {
@@ -171,8 +175,16 @@ public final class WindowManager {
 
     public static void OpenMainWindow() {
         Logger.info("Opening main window.");
-        flags32.set("ShowMainWindow", true);
-        UpdateMainWindow();
+
+        runOnEDT(() -> {
+            if (mainWindow == null) {
+                Logger.debug("Creating MainWindow.");
+                mainWindow = new MainWindow();
+            }
+
+            flags32.set("ShowMainWindow", true);
+            mainWindow.setVisible(true);
+        });
     }
 
     public static void CloseMainWindow() {
@@ -189,8 +201,16 @@ public final class WindowManager {
 
     public static void OpenRectPrismWindow() {
         Logger.info("Opening rectangular prism window.");
-        flags32.set("ShowRectPrismWindow", true);
-        UpdateRectPrismWindow();
+
+        runOnEDT(() -> {
+            if (rectPrismWindow == null) {
+                Logger.debug("Creating RectPrismWindow.");
+                rectPrismWindow = new RectPrismWindow();
+            }
+
+            flags32.set("ShowRectPrismWindow", true);
+            rectPrismWindow.setVisible(true);
+        });
     }
 
     public static void CloseRectPrismWindow() {
@@ -207,8 +227,16 @@ public final class WindowManager {
 
     public static void OpenSquareWindow() {
         Logger.info("Opening square window.");
-        flags32.set("ShowSquareWindow", true);
-        UpdateSquareWindow();
+
+        runOnEDT(() -> {
+            if (squareWindow == null) {
+                Logger.debug("Creating SquareWindow.");
+                squareWindow = new SquareWindow();
+            }
+
+            flags32.set("ShowSquareWindow", true);
+            squareWindow.setVisible(true);
+        });
     }
 
     public static void CloseSquareWindow() {
@@ -225,8 +253,16 @@ public final class WindowManager {
 
     public static void OpenTemperatureWindow() {
         Logger.info("Opening temperature window.");
-        flags32.set("ShowTemperatureWindow", true);
-        UpdateTemperatureWindow();
+
+        runOnEDT(() -> {
+            if (temperatureWindow == null) {
+                Logger.debug("Creating TemperatureWindow.");
+                temperatureWindow = new TemperatureWindow();
+            }
+
+            flags32.set("ShowTemperatureWindow", true);
+            temperatureWindow.setVisible(true);
+        });
     }
 
     public static void CloseTemperatureWindow() {
@@ -243,8 +279,16 @@ public final class WindowManager {
 
     public static void OpenTimeWindow() {
         Logger.info("Opening time window.");
-        flags32.set("ShowTimeWindow", true);
-        UpdateTimeWindow();
+
+        runOnEDT(() -> {
+            if (timeWindow == null) {
+                Logger.debug("Creating TimeWindow.");
+                timeWindow = new TimeWindow();
+            }
+
+            flags32.set("ShowTimeWindow", true);
+            timeWindow.setVisible(true);
+        });
     }
 
     public static void CloseTimeWindow() {
@@ -261,8 +305,16 @@ public final class WindowManager {
 
     public static void OpenTriangleWindow() {
         Logger.info("Opening triangle window.");
-        flags32.set("ShowTriangleWindow", true);
-        UpdateTriangleWindow();
+
+        runOnEDT(() -> {
+            if (triangleWindow == null) {
+                Logger.debug("Creating TriangleWindow.");
+                triangleWindow = new TriangleWindow();
+            }
+
+            flags32.set("ShowTriangleWindow", true);
+            triangleWindow.setVisible(true);
+        });
     }
 
     public static void CloseTriangleWindow() {
@@ -279,8 +331,16 @@ public final class WindowManager {
 
     public static void OpenVolumeWindow() {
         Logger.info("Opening volume window.");
-        flags32.set("ShowVolumeWindow", true);
-        UpdateVolumeWindow();
+
+        runOnEDT(() -> {
+            if (volumeWindow == null) {
+                Logger.debug("Creating VolumeWindow.");
+                volumeWindow = new VolumeWindow();
+            }
+
+            flags32.set("ShowVolumeWindow", true);
+            volumeWindow.setVisible(true);
+        });
     }
 
     public static void CloseVolumeWindow() {
@@ -312,9 +372,7 @@ public final class WindowManager {
     private static void UpdateCircleWindow() {
         runOnEDT(() -> {
             if (circleWindow != null) {
-                boolean visible = flags32.get("ShowCircleWindow");
-                circleWindow.setVisible(visible);
-                Logger.info("Circle window visibility set to " + visible + ".");
+                circleWindow.setVisible(flags32.get("ShowCircleWindow"));
             }
         });
     }
@@ -322,9 +380,7 @@ public final class WindowManager {
     private static void UpdateCubeWindow() {
         runOnEDT(() -> {
             if (cubeWindow != null) {
-                boolean visible = flags32.get("ShowCubeWindow");
-                cubeWindow.setVisible(visible);
-                Logger.info("Cube window visibility set to " + visible + ".");
+                cubeWindow.setVisible(flags32.get("ShowCubeWindow"));
             }
         });
     }
@@ -332,9 +388,7 @@ public final class WindowManager {
     private static void UpdateCurrencyWindow() {
         runOnEDT(() -> {
             if (currencyWindow != null) {
-                boolean visible = flags32.get("ShowCurrencyWindow");
-                currencyWindow.setVisible(visible);
-                Logger.info("Currency window visibility set to " + visible + ".");
+                currencyWindow.setVisible(flags32.get("ShowCurrencyWindow"));
             }
         });
     }
@@ -342,9 +396,7 @@ public final class WindowManager {
     private static void UpdateCylinderWindow() {
         runOnEDT(() -> {
             if (cylinderWindow != null) {
-                boolean visible = flags32.get("ShowCylinderWindow");
-                cylinderWindow.setVisible(visible);
-                Logger.info("Cylinder window visibility set to " + visible + ".");
+                cylinderWindow.setVisible(flags32.get("ShowCylinderWindow"));
             }
         });
     }
@@ -352,9 +404,7 @@ public final class WindowManager {
     private static void UpdateMainWindow() {
         runOnEDT(() -> {
             if (mainWindow != null) {
-                boolean visible = flags32.get("ShowMainWindow");
-                mainWindow.setVisible(visible);
-                Logger.info("Main window visibility set to " + visible + ".");
+                mainWindow.setVisible(flags32.get("ShowMainWindow"));
             }
         });
     }
@@ -362,9 +412,7 @@ public final class WindowManager {
     private static void UpdateRectPrismWindow() {
         runOnEDT(() -> {
             if (rectPrismWindow != null) {
-                boolean visible = flags32.get("ShowRectPrismWindow");
-                rectPrismWindow.setVisible(visible);
-                Logger.info("Rectangular prism window visibility set to " + visible + ".");
+                rectPrismWindow.setVisible(flags32.get("ShowRectPrismWindow"));
             }
         });
     }
@@ -372,9 +420,7 @@ public final class WindowManager {
     private static void UpdateSquareWindow() {
         runOnEDT(() -> {
             if (squareWindow != null) {
-                boolean visible = flags32.get("ShowSquareWindow");
-                squareWindow.setVisible(visible);
-                Logger.info("Square window visibility set to " + visible + ".");
+                squareWindow.setVisible(flags32.get("ShowSquareWindow"));
             }
         });
     }
@@ -382,9 +428,7 @@ public final class WindowManager {
     private static void UpdateTemperatureWindow() {
         runOnEDT(() -> {
             if (temperatureWindow != null) {
-                boolean visible = flags32.get("ShowTemperatureWindow");
-                temperatureWindow.setVisible(visible);
-                Logger.info("Temperature window visibility set to " + visible + ".");
+                temperatureWindow.setVisible(flags32.get("ShowTemperatureWindow"));
             }
         });
     }
@@ -392,9 +436,7 @@ public final class WindowManager {
     private static void UpdateTimeWindow() {
         runOnEDT(() -> {
             if (timeWindow != null) {
-                boolean visible = flags32.get("ShowTimeWindow");
-                timeWindow.setVisible(visible);
-                Logger.info("Time window visibility set to " + visible + ".");
+                timeWindow.setVisible(flags32.get("ShowTimeWindow"));
             }
         });
     }
@@ -402,9 +444,7 @@ public final class WindowManager {
     private static void UpdateTriangleWindow() {
         runOnEDT(() -> {
             if (triangleWindow != null) {
-                boolean visible = flags32.get("ShowTriangleWindow");
-                triangleWindow.setVisible(visible);
-                Logger.info("Triangle window visibility set to " + visible + ".");
+                triangleWindow.setVisible(flags32.get("ShowTriangleWindow"));
             }
         });
     }
@@ -412,12 +452,12 @@ public final class WindowManager {
     private static void UpdateVolumeWindow() {
         runOnEDT(() -> {
             if (volumeWindow != null) {
-                boolean visible = flags32.get("ShowVolumeWindow");
-                volumeWindow.setVisible(visible);
-                Logger.info("Volume window visibility set to " + visible + ".");
+                volumeWindow.setVisible(flags32.get("ShowVolumeWindow"));
             }
         });
     }
+
+    // ==================== SWING EDT ====================
 
     private static void runOnEDT(Runnable task) {
         if (SwingUtilities.isEventDispatchThread()) {
