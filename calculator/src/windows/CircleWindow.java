@@ -69,8 +69,5 @@ public class CircleWindow extends JFrame{
 	    panel.add(outputField);
 	    
 	    this.add(panel);
-	    
-	    this.setLocationRelativeTo(null);
-	    this.setVisible(true);
 	}
 }
