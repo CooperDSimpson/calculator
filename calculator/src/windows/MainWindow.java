@@ -9,6 +9,7 @@ import java.awt.event.ComponentEvent;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import core.WindowManager;
 import core.logger.Logger;
 
 public class MainWindow extends JFrame {
@@ -64,6 +65,21 @@ public class MainWindow extends JFrame {
             triangleButton,
             squareButton
         };
+        
+        circleButton.addActionListener(e -> {
+            Logger.info("Circle button pressed.");
+            WindowManager.OpenCircleWindow();
+        });
+        
+        triangleButton.addActionListener(e -> {
+            Logger.info("Triangle button pressed.");
+            WindowManager.OpenTriangleWindow();
+        });
+        
+        squareButton.addActionListener(e -> {
+            Logger.info("Square button pressed.");
+            WindowManager.OpenSquareWindow();
+        });
 
         for (JButton button : twoDButtons) {
             button.setPreferredSize(new Dimension(150, 30));
@@ -98,6 +114,22 @@ public class MainWindow extends JFrame {
         JButton rectangularPrismButton = new JButton("Rectangular Prism");
         JButton cylinderButton = new JButton("Cylinder");
 
+        cubeButton.addActionListener(e -> {
+            Logger.info("Cube button pressed.");
+            WindowManager.OpenCubeWindow();
+        });
+        
+        rectangularPrismButton.addActionListener(e -> {
+            Logger.info("Rectangular Prism button pressed.");
+            WindowManager.OpenRectPrismWindow();
+        });
+        
+        cylinderButton.addActionListener(e -> {
+            Logger.info("Cylinder button pressed.");
+            WindowManager.OpenCylinderWindow();
+        });
+        
+        
         JButton[] threeDButtons = {
             cubeButton,
             rectangularPrismButton,
@@ -151,6 +183,26 @@ public class MainWindow extends JFrame {
         JButton temperatureButton = new JButton("Temperature");
         JButton currencyButton = new JButton("Currency");
         JButton timeButton = new JButton("Time");
+        
+        volumeButton.addActionListener(e -> {
+            Logger.info("Volume button pressed.");
+            WindowManager.OpenVolumeWindow();
+        });
+        
+        temperatureButton.addActionListener(e -> {
+            Logger.info("Temperature button pressed.");
+            WindowManager.OpenTemperatureWindow();
+        });
+        
+        currencyButton.addActionListener(e -> {
+            Logger.info("Currency button pressed.");
+            WindowManager.OpenCurrencyWindow();
+        });
+        
+        timeButton.addActionListener(e -> {
+            Logger.info("Time button pressed.");
+            WindowManager.OpenTimeWindow();
+        });
 
         JButton[] conversionButtons = {
             volumeButton,
