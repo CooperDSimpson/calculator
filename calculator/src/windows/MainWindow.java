@@ -20,7 +20,7 @@ public class MainWindow extends JFrame {
 
         setTitle("Surface Area Calculator");
         setSize(600, 450);
-        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
         // ==================== MAIN PANEL ====================
