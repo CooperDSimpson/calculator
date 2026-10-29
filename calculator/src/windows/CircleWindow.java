@@ -11,10 +11,10 @@ import core.logger.Logger;
 public class CircleWindow extends JFrame{
 	public CircleWindow()
 	{
-		Logger.info("Creating MainWindow.");
+		Logger.info("Creating CircleWindow.");
 	
 	    Logger.debug("Setting window title.");
-	    setTitle("Surface Area Calculator");
+	    setTitle("Circle Surface Area");
 	
 	    Logger.debug("Setting window size to 600x400.");
 	    setSize(600, 400);
