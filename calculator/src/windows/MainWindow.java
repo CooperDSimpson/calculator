@@ -3,6 +3,9 @@ package windows;
 import javax.swing.*;
 import java.awt.*;
 
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -15,7 +18,7 @@ public class MainWindow extends JFrame {
         Logger.info("Creating MainWindow.");
 
         setTitle("Surface Area Calculator");
-        setSize(600, 400);
+        setSize(600, 450);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 

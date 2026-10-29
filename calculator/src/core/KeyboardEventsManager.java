@@ -24,7 +24,6 @@ public class KeyboardEventsManager implements KeyEventDispatcher {
             event.isControlDown() &&
             event.isShiftDown()
         ) {
-
             System.out.println();
 
             return true;
