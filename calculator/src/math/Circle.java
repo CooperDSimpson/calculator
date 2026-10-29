@@ -4,11 +4,10 @@ import core.logger.Logger;
 
 public class Circle 
 {
-	public static Double CircleCalc(String radius)
+	public static String CircleCalc(Double radius)
 	{
 		Logger.debug("CircleCalc running...");
-		Double convertedRadius = Double.valueOf(radius);
-		Double area =  Math.PI * (convertedRadius * convertedRadius);
+		String area =  Double.toString(Math.PI * (radius * radius));
 		Logger.debug("CircleCalc done.");
 		return area;
 	}
