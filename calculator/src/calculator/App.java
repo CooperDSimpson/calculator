@@ -32,7 +32,6 @@ public class App {
         // ==================== APPLICATION STARTUP ====================
 
         Logger.info("Program starting...");
-        Logger.log("Something");
 
         try {
             WindowManager.Initialize();
