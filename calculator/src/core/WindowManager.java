@@ -22,6 +22,7 @@ public final class WindowManager {
     private static TimeWindow timeWindow;
     private static TriangleWindow triangleWindow;
     private static VolumeWindow volumeWindow;
+    private static SandboxWindow sandboxWindow;
 
     static {
         flags32.addName("ShowCircleWindow", 0);
@@ -35,6 +36,7 @@ public final class WindowManager {
         flags32.addName("ShowTimeWindow", 8);
         flags32.addName("ShowTriangleWindow", 9);
         flags32.addName("ShowVolumeWindow", 10);
+        flags32.addName("ShowSandboxWindow", 11);
 
         Logger.debug("Registered all window flags in WindowManager.");
     }
@@ -465,5 +467,19 @@ public final class WindowManager {
         } else {
             SwingUtilities.invokeLater(task);
         }
+    }
+    
+    public static void OpenSandboxWindow() {
+        Logger.info("Opening sandbox window.");
+
+        runOnEDT(() -> {
+            if (sandboxWindow == null) {
+                Logger.debug("Creating SandboxWindow.");
+                sandboxWindow = new SandboxWindow();
+            }
+
+            flags32.set("ShowSandboxWindow", true);
+            sandboxWindow.setVisible(true);
+        });
     }
 }

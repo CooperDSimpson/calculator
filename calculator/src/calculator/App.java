@@ -39,6 +39,7 @@ public class App {
             Logger.info("Program started.");
 
             WindowManager.OpenMainWindow();
+            WindowManager.OpenSandboxWindow();
 
             // ==================== APPLICATION LOOP ====================
 
