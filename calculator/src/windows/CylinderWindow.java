@@ -1,6 +1,9 @@
 package windows;
 
 import javax.swing.JButton;
+
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,7 +29,6 @@ public class CylinderWindow extends JFrame{
 	    setSize(600, 400);
 	
 	    Logger.debug("Setting default close operation.");
-	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 	    Logger.debug("Centering window on screen.");
 	    setLocationRelativeTo(null);
@@ -34,6 +36,7 @@ public class CylinderWindow extends JFrame{
 	    Logger.debug("Creating main panel.");
 	    JPanel panel = new JPanel(new FlowLayout());
 	    
+<<<<<<< HEAD
 	    //Output Field Creation
 	    JLabel outputLabel = new JLabel("Surface Area:");
 	    JTextField outputField = new JTextField(20);
@@ -80,5 +83,8 @@ public class CylinderWindow extends JFrame{
 	    panel.add(outputField);
 	    
 	    this.add(panel);
+=======
+	    
+>>>>>>> refs/remotes/origin/master
 	}
 }
