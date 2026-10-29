@@ -7,6 +7,7 @@ import javax.swing.border.Border;
 
 import java.awt.*;
 
+import core.WindowManager;
 import core.logger.Logger;
 
 public class SandboxWindow extends JFrame {
@@ -18,7 +19,7 @@ public class SandboxWindow extends JFrame {
 
         setTitle("Sandbox");
         setSize(800, 700);
-        setLocationRelativeTo(null);
+	    setLocationRelativeTo(WindowManager.getMainWindow());
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         // Main container

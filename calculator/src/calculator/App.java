@@ -24,13 +24,17 @@ public class App {
 
     // scotty edit
     public static void main(String[] args) {
+    	Logger.info("Program starting...");
+    	String launchArgumentString = "";
     	
     	for(String argument : args) {
     		ProgramState.launchOptions.add(argument.toUpperCase());
+    		launchArgumentString += argument + ",";
     	}
     	
     	Set<String> launchOptions = ProgramState.launchOptions;
 
+    	if(!launchArgumentString.isEmpty())Logger.info("LaunchOptions: " + launchArgumentString);
         // ==================== LOGGER CONFIGURATION ====================
 
         Logger.setMinimumLevel(LogLevel.DEBUG);
@@ -45,7 +49,8 @@ public class App {
 
         // ==================== APPLICATION STARTUP ====================
 
-        Logger.info("Program starting...");
+        
+        
 
         try {
             WindowManager.Initialize();

@@ -482,4 +482,8 @@ public final class WindowManager {
             sandboxWindow.setVisible(true);
         });
     }
+    
+    public static MainWindow getMainWindow() {
+    	return mainWindow;
+    }
 }
