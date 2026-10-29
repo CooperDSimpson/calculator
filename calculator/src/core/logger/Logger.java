@@ -340,7 +340,7 @@ public final class Logger {
             case ERROR -> "\u001B[31m";
             case FATAL -> "\u001B[1;31m";
             case OFF   -> "";
-            case CUSTOM -> "\u001B[97m"; // Bright white
+            case CUSTOM -> "\u001B[90m"; // Grey
         };
 
         return color + text + "\u001B[0m";
