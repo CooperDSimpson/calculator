@@ -4,13 +4,10 @@ import core.logger.Logger;
 
 public class Cylinder
 {
-	public static Double cylinderCalc(String radius, String height)
+	public static String cylinderCalc(Double radius, Double height)
 	{
 		Logger.debug("cylinderCalc running...");
-		Double cRadius = Double.valueOf(radius);
-		Double cHeight = Double.valueOf(height);
-		
-		Double area = 2 * Math.PI * cRadius * (cRadius + cHeight);
+		String area = Double.toString(2 * Math.PI * radius * (radius + height));
 		Logger.debug("cylinderCalc done.");
 		return area;
 	}
