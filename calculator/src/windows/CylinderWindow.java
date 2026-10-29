@@ -36,7 +36,6 @@ public class CylinderWindow extends JFrame{
 	    Logger.debug("Creating main panel.");
 	    JPanel panel = new JPanel(new FlowLayout());
 	    
-<<<<<<< HEAD
 	    //Output Field Creation
 	    JLabel outputLabel = new JLabel("Surface Area:");
 	    JTextField outputField = new JTextField(20);
@@ -83,8 +82,5 @@ public class CylinderWindow extends JFrame{
 	    panel.add(outputField);
 	    
 	    this.add(panel);
-=======
-	    
->>>>>>> refs/remotes/origin/master
 	}
 }
