@@ -1,6 +1,9 @@
 package windows;
 
 import javax.swing.JButton;
+
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.FlowLayout;
@@ -20,12 +23,13 @@ public class CylinderWindow extends JFrame{
 	    setSize(600, 400);
 	
 	    Logger.debug("Setting default close operation.");
-	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 	    Logger.debug("Centering window on screen.");
 	    setLocationRelativeTo(null);
 	
 	    Logger.debug("Creating main panel.");
 	    JPanel panel = new JPanel(new FlowLayout());
+	    
+	    
 	}
 }

@@ -20,7 +20,7 @@ public class SquareWindow extends JFrame{
 	    setSize(600, 400);
 	
 	    Logger.debug("Setting default close operation.");
-	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
 	    Logger.debug("Centering window on screen.");
 	    setLocationRelativeTo(null);
