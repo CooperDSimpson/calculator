@@ -1,9 +1,17 @@
 
+//launch arguments (not case sensitive):
+//	+ sandbox : makes sandbox window visible.
+
 package calculator;
 
+import core.ProgramState;
 import core.WindowManager;
+
 import core.logger.Logger;
 import core.logger.LogLevel;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class App {
 
@@ -16,6 +24,12 @@ public class App {
 
     // scotty edit
     public static void main(String[] args) {
+    	
+    	for(String argument : args) {
+    		ProgramState.launchOptions.add(argument.toUpperCase());
+    	}
+    	
+    	Set<String> launchOptions = ProgramState.launchOptions;
 
         // ==================== LOGGER CONFIGURATION ====================
 
@@ -39,7 +53,7 @@ public class App {
             Logger.info("Program started.");
 
             WindowManager.OpenMainWindow();
-            WindowManager.OpenSandboxWindow();
+            if(launchOptions.contains("SANDBOX")) WindowManager.OpenSandboxWindow();
 
             // ==================== APPLICATION LOOP ====================
 
