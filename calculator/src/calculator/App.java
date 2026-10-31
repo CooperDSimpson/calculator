@@ -27,12 +27,14 @@ public class App {
     	Logger.info("Program starting...");
     	String launchArgumentString = "";
     	
+    	//collect arguments to use as launch arguments.
+    	
     	for(String argument : args) {
     		ProgramState.launchOptions.add(argument.toUpperCase());
     		launchArgumentString += argument + ",";
     	}
     	
-    	Set<String> launchOptions = ProgramState.launchOptions;
+    	Set<String> launchOptions = ProgramState.launchOptions; //alias for easier use
 
     	if(!launchArgumentString.isEmpty())Logger.info("LaunchOptions: " + launchArgumentString);
         // ==================== LOGGER CONFIGURATION ====================
