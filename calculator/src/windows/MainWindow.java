@@ -18,8 +18,8 @@ public class MainWindow extends JFrame {
 
         Logger.info("Creating MainWindow.");
 
-        setTitle("Surface Area Calculator");
-        setSize(600, 450);
+        setTitle("Calculator");
+        setSize(600, 530);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -80,6 +80,8 @@ public class MainWindow extends JFrame {
             Logger.info("Square button pressed.");
             WindowManager.OpenSquareWindow();
         });
+        
+        
 
         for (JButton button : twoDButtons) {
             button.setPreferredSize(new Dimension(150, 30));
@@ -226,7 +228,43 @@ public class MainWindow extends JFrame {
         conversionsSection.add(conversionsTitle, BorderLayout.NORTH);
         conversionsSection.add(conversionsPanel, BorderLayout.CENTER);
 
-        panel.add(conversionsSection, BorderLayout.SOUTH);
+
+        JPanel bottomPanel = new JPanel(new BorderLayout());
+
+        bottomPanel.add(conversionsSection, BorderLayout.CENTER);
+
+        // ==================== PROFILER BUTTON ====================
+
+        JPanel profilerPanel = new JPanel();
+        profilerPanel.setLayout(new BoxLayout(profilerPanel, BoxLayout.Y_AXIS));
+
+        profilerPanel.setBorder(
+            BorderFactory.createEmptyBorder(10, 10, 10, 10)
+        );
+        
+        JLabel profilerTitle = new JLabel("Idea Button");
+        profilerTitle.setFont(new Font("Arial", Font.BOLD, 16));
+        profilerTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        JButton openProfilerButton = new JButton("Open Profiler");
+
+        openProfilerButton.setPreferredSize(new Dimension(150, 30));
+        openProfilerButton.setMinimumSize(new Dimension(150, 30));
+        openProfilerButton.setMaximumSize(new Dimension(150, 30));
+        openProfilerButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        openProfilerButton.addActionListener(e -> {
+            Logger.info("Open Profiler button pressed.");
+            WindowManager.OpenProfilerWindow();
+        });
+
+        profilerPanel.add(profilerTitle);
+        profilerPanel.add(Box.createVerticalStrut(8));
+        profilerPanel.add(openProfilerButton);
+
+        bottomPanel.add(profilerPanel, BorderLayout.SOUTH);
+
+        panel.add(bottomPanel, BorderLayout.SOUTH);
 
         // ==================== ADD MAIN PANEL ====================
 

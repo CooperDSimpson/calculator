@@ -23,6 +23,7 @@ public final class WindowManager {
     private static TriangleWindow triangleWindow;
     private static VolumeWindow volumeWindow;
     private static SandboxWindow sandboxWindow;
+    private static ProfilerWindow profilerWindow;
 
     static {
         flags32.addName("ShowCircleWindow", 0);
@@ -37,6 +38,7 @@ public final class WindowManager {
         flags32.addName("ShowTriangleWindow", 9);
         flags32.addName("ShowVolumeWindow", 10);
         flags32.addName("ShowSandboxWindow", 11);
+        flags32.addName("ShowProfilerWindow", 11);
 
         Logger.debug("Registered all window flags in WindowManager.");
     }
@@ -354,6 +356,32 @@ public final class WindowManager {
     public static Boolean IsVolumeWindowOpen() {
         return flags32.get("ShowVolumeWindow");
     }
+    
+    // ==================== WINDOW CONTROL: PROFILER ====================
+
+    public static void OpenProfilerWindow() {
+        Logger.info("Opening profiler window.");
+
+        runOnEDT(() -> {
+            if (profilerWindow == null) {
+                Logger.debug("Creating ProfilerWindow.");
+                profilerWindow = new ProfilerWindow();
+            }
+
+            flags32.set("ShowProfilerWindow", true);
+            profilerWindow.setVisible(true);
+        });
+    }
+
+    public static void CloseProfilerWindow() {
+        Logger.info("Closing profiler window.");
+        flags32.set("ShowProfilerWindow", false);
+        UpdateCircleWindow();
+    }
+
+    public static Boolean IsProfilerWindowOpen() {
+        return flags32.get("ShowCircleWindow");
+    }
 
     // ==================== VISIBILITY UPDATERS ====================
 
@@ -369,6 +397,7 @@ public final class WindowManager {
         UpdateTimeWindow();
         UpdateTriangleWindow();
         UpdateVolumeWindow();
+        UpdateProfilerWindow();
     }
 
     private static void UpdateCircleWindow() {
@@ -455,6 +484,14 @@ public final class WindowManager {
         runOnEDT(() -> {
             if (volumeWindow != null) {
                 volumeWindow.setVisible(flags32.get("ShowVolumeWindow"));
+            }
+        });
+    }
+    
+    private static void UpdateProfilerWindow() {
+        runOnEDT(() -> {
+            if (volumeWindow != null) {
+                volumeWindow.setVisible(flags32.get("ShowProfilerWindow"));
             }
         });
     }
