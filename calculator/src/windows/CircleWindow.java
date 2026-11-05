@@ -34,7 +34,7 @@ public class CircleWindow extends JFrame{
 	    JTextField outputField = new JTextField(20);
 	    outputField.setEditable(false);
 	    
-	    //Radius Input Field creation
+	    //Input Field creation
 	    JLabel radiusLabel = new JLabel("Radius:");
 	    JTextField radiusField = new JTextField(20);
 	    
