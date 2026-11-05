@@ -3,6 +3,7 @@ package windows;
 import math.Circle;
 
 import javax.swing.*;
+import javax.swing.JSeparator;
 
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -22,17 +23,20 @@ public class CircleWindow extends JFrame{
 	    Logger.debug("Setting window size to 600x400.");
 	    setSize(600, 400);
 	
-	
-	    Logger.debug("Centering window on screen.");
 	    setLocationRelativeTo(WindowManager.getMainWindow());
 	
 	    Logger.debug("Creating main panel.");
 	    JPanel panel = new JPanel(new FlowLayout());
 	    
 	    //Output Field Creation
-	    JLabel outputLabel = new JLabel("Area:");
-	    JTextField outputField = new JTextField(20);
-	    outputField.setEditable(false);
+	    Logger.debug("Creating area label");
+	    JLabel areaLabel = new JLabel("Area:");
+	    JTextField areaField = new JTextField(20);
+	    areaField.setEditable(false);
+	    
+	    JLabel formulaLabel = new JLabel("Formula:");
+	    JTextField formulaField = new JTextField(20);
+	    formulaField.setEditable(false);
 	    
 	    //Input Field creation
 	    JLabel radiusLabel = new JLabel("Radius:");
@@ -40,6 +44,7 @@ public class CircleWindow extends JFrame{
 	    
 	    //Calculate Button Creation + Action event to take input and pass to Circle math function
 	    JButton calculateButton = new JButton("Calculate");
+	    JButton resetButton = new JButton("Reset");
 	    
 	    calculateButton.addActionListener(new ActionListener() {
 	    	@Override
@@ -52,10 +57,24 @@ public class CircleWindow extends JFrame{
 	    			
 	    			String result = Circle.CircleCalc(radius);
 	    			
-	    			outputField.setText(result);
+	    			areaField.setText(result);
+	    			
+	    			String formula = String.format("PI*%f^2=%s", radius, result);
+	    			
+	    			formulaField.setText(formula);
 	    		} catch (NumberFormatException ex) {
-	    			outputField.setText("ERROR: Invalid Input");
+	    			areaField.setText("ERROR: Invalid Input");
+	    			formulaField.setText("ERROR: Invalid Input");
 	    		}
+	    	}
+	    });
+	    
+	    resetButton.addActionListener(new ActionListener() {
+	    	@Override
+	    	public void actionPerformed(ActionEvent e) {
+	    		radiusField.setText("");
+	    		areaField.setText("");
+	    		formulaField.setText("");
 	    	}
 	    });
 	    
@@ -63,8 +82,11 @@ public class CircleWindow extends JFrame{
 	    panel.add(radiusLabel);
 	    panel.add(radiusField);
 	    panel.add(calculateButton);
-	    panel.add(outputLabel);
-	    panel.add(outputField);
+	    panel.add(resetButton);
+	    panel.add(formulaLabel);
+	    panel.add(formulaField);
+	    panel.add(areaLabel);
+	    panel.add(areaField);
 	    
 	    this.add(panel);
 	}
